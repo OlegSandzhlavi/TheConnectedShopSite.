@@ -43,7 +43,11 @@ public void checkUrl () {
 
 }
 
-
+@After
+public void close () {
+    if (driver != null)
+        driver.quit();
+}
 
 @Test
 

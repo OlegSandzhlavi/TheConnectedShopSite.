@@ -32,6 +32,17 @@ public class rozetkatest {
         WebElement findButton = driver.findElement(By.xpath("/html/body/rz-app-root/div/div/rz-header/rz-main-header/header/div/div/div/rz-search-suggest/form/button"));
         findButton.click();
 
+        if (findButton!=null) {
+            System.out.println("Succes");
+        } else {
+
+            System.out.println("Error");
+        }
+
+
+
+
+
 
     }
 

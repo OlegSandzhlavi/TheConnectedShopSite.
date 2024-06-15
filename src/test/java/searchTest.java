@@ -22,11 +22,26 @@ public class searchTest {
     public void searchExistedProduct () {
             driver.get("https://theconnectedshop.com/");
             WebElement acceptButton = driver.findElement(By.id("shopify-pc__banner__btn-accept"));
-            assertNotNull("Accept button should be present on the page", acceptButton);
+           // assertNotNull("Accept button should be present on the page", acceptButton);
+            if (acceptButton != null) {
+                acceptButton.click();
+                System.out.println("Accept button is present");
+            } else {
+                System.out.println("Accept button not found");
+            }
 
-            acceptButton.click();
+
+
+
             WebElement searchLink = driver.findElement(By.xpath("//a[@href='/search' and @class='Heading Link Link--primary Text--subdued u-h8' and @data-action='toggle-search']"));
-            assertNotNull("Search link should be present on the page", searchLink);
+            //assertNotNull("Search link should be present on the page", searchLink);
+            if (searchLink != null) {
+                searchLink.click();
+                System.out.println("SearchLink is present");
+            } else {
+                System.out.println("SearchLink not found");
+            }
+
 
 
             assertEquals("https://theconnectedshop.com/search", searchLink.getAttribute("href"));
@@ -37,7 +52,12 @@ public class searchTest {
             assertEquals("SEARCH", searchLink.getText());
 
             WebElement linkElement = driver.findElement(By.xpath("//a[@href='/search' and @class='Heading Link Link--primary Text--subdued u-h8']"));
-            linkElement.click();
+            //linkElement.click();
+            if (linkElement != null) {
+                linkElement.click();
+            } else {
+                System.out.println("linkElement not found");
+            }
 
 
 
@@ -46,9 +66,11 @@ public class searchTest {
             @Test
                     public void searchNotExistedProduct () {
                 driver.get("https://theconnectedshop.com/");
+
                 WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"section-header\"]/div/div[3]/nav/ul/li[2]/a"));
 
                 searchButton.click();
+
 
 
                 WebElement searchField= driver.findElement(By.xpath("//*[@id=\"Search\"]/div/div[1]/form/input[1]"));

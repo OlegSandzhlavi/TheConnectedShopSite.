@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
 import static org.junit.Assert.assertEquals;
 
 public class LemonSchool {
@@ -21,23 +23,31 @@ public class LemonSchool {
         driver.get("https://lemon.school/");
         String expectedTitle = "IT курси Київ, ІТ освіта з працевлаштуванням в Києві, АйТі навчання з нуля в школі LemonSchool";
         String actualTitle = driver.getTitle();
-        assertEquals(actualTitle,expectedTitle);
+        assertEquals(actualTitle, expectedTitle);
 
-        WebElement element= driver.findElement(By.cssSelector("#courses"));}
+        WebElement element = driver.findElement(By.cssSelector("#courses"));
+        driver.findElement(By.xpath("/html/body/div[1]/header/div[2]/div/nav/ul/li[1]/a")).click();
+
+    }
+
 
     @Test
-    public void check () {
+    public void check() {
 
         driver.get("https://lemon.school/");
-        WebElement element5 = driver.findElement(By.xpath("/html/body/div[1]/header/div[2]/div/div[2]/div[1]/div/svg/path"));
+
+        WebElement courses = driver.findElement(By.xpath("//*[@id=\"courses_0\"]/div/div/div[6]/div[1]/a"));
+        courses.click();
+    }
+
+
+
+
+
 
     }
 
 
-    @After
-    public void close () {
-            if (driver != null)
-                driver.quit();
-        }
 
-    }
+
+
